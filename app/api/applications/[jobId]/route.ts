@@ -40,7 +40,7 @@ export async function POST(req: Request, { params }: { params: { jobId: string }
 
 export async function GET(req: Request, { params }: { params: { id: string }}) {
   try {
-    const { jobId } = params;
+    const { id: jobId } = params;
 
 
     if (!jobId) {
@@ -54,7 +54,7 @@ export async function GET(req: Request, { params }: { params: { id: string }}) {
     const applications = await getApplicationsByJobId(jobId);
 
  
-    if (!applications || applications.length === 0) {
+    if (!applications || applications.applications.length === 0) {
       return NextResponse.json(
         { error: "No applications found for this job" },
         { status: 404 }
@@ -66,7 +66,7 @@ export async function GET(req: Request, { params }: { params: { id: string }}) {
     console.error("Error fetching applications:", error);
 
     return NextResponse.json(
-      { error: "Failed to fetch applications", details: error.message },
+      { error: "Failed to fetch applications", details: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
