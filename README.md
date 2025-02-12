@@ -1,36 +1,247 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Mini Job Board - Next.js 15 (App Router)
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project is a Mini Job Board built using Next.js 15 (App Router). It integrates Server Actions for backend logic and uses Neon DB (PostgreSQL) for database management. The app is fully responsive, leveraging Tailwind CSS for styling and TypeScript for type safety. The UI is enhanced using the shadcn/ui library for faster development.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Candidate Flow (/candidate)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Job Listings Page (/candidate/jobs):
 
-## Learn More
+- Displays a list of job posts fetched from the backend.
 
-To learn more about Next.js, take a look at the following resources:
+- Includes search and filtering options (category, location, salary range).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Job Details Page (/candidate/jobs/[id]):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Shows detailed job information (title, description, company, etc.).
 
-## Deploy on Vercel
+- Allows candidates to apply for the job.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Apply Now Feature (/candidate/apply/[jobId]):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- A form to submit candidate details (name, email, resume link, cover letter).
+
+- Uses Server Actions for form submission.
+
+- Company Flow (/company)
+- Job Dashboard (/company/jobs):
+
+- Displays all job posts created by the company.
+
+- Allows companies to manage job posts (edit, delete).
+
+- Post a Job (/company/jobs/new):
+
+- A form to create new job posts with fields like title, description, category, location, and salary range.
+
+- Uses Server Actions for job submission.
+
+- Manage Applications (/company/jobs/[id]/applications):
+
+- Displays applications submitted for a specific job post.
+
+### Tech Stack
+Frontend:
+
+- Next.js 15 (App Router)
+
+- TypeScript
+
+- Tailwind CSS
+
+- shadcn/ui (UI Library)
+
+Backend:
+
+- Next.js Server Actions
+
+- Neon DB (PostgreSQL)
+
+- Prisma
+
+Deployment:
+
+- Vercel (Frontend + Backend APIs)
+
+### Database Design
+
+Tables
+jobs Table:
+
+- id (Primary Key)
+
+- title (Job Title)
+
+- description (Job Description)
+
+- category (Job Category)
+
+- location (Job Location)
+
+- salary (Salary Range)
+
+- type (Job Type: Full-time, Part-time, Remote, etc.)
+
+- createdAt (Timestamp)
+
+applications Table:
+
+- id (Primary Key)
+
+- jobId (Foreign Key referencing jobs.id)
+
+- name (Candidate Name)
+
+- email (Candidate Email)
+
+- resumeLink (Link to Resume)
+
+- coverLetter (Cover Letter)
+
+- createdAt (Timestamp)
+
+API Endpoints
+Core API Endpoints (via Server Actions)
+- POST /api/jobs
+
+Create a new job post.
+
+- GET /api/jobs
+
+Fetch all job posts.
+
+- GET /api/jobs/:id
+
+Fetch job details by ID.
+
+- POST /api/applications
+
+Submit a job application.
+
+### Setup Instructions
+
+Prerequisites
+
+- Node.js (v18 or higher)
+
+- PostgreSQL (via Neon DB)
+
+- Vercel CLI (for deployment)
+
+### Steps
+
+- Clone the Repository:
+
+
+  ```
+  git clone https://github.com/Code12Git/mini-job-board.git
+  cd mini-job-board
+  Install Dependencies:
+  ```
+
+- Install Package.json
+
+  ```
+  npm install
+
+  ```
+
+- Set Up Environment Variables:
+
+- Create a .env file in the root directory and add the following:
+
+
+  ```
+  DATABASE_URL=your-neon-db-connection-string
+  ```
+
+- Run the Development Server:
+
+  ```
+  npm run dev
+  ```
+
+### Deploy to Vercel:
+
+
+- Install Vercel CLI:
+
+
+  ```
+  npm install -g vercel
+  Deploy the app:
+  ```
+
+
+- vercel
+Candidate Flow
+
+- Job Listings Page:
+  Job Listings Page
+
+- Job Details Page:
+  Job Details Page
+
+- Apply Now Form:
+  Apply Now Form
+
+Company Flow
+- Job Dashboard:
+  Job Dashboard
+
+- Post a Job Form:
+  Post a Job Form
+
+- Manage Applications:
+  Manage Applications
+
+### Contributing
+Contributions are welcome! Please follow these steps:
+
+- Fork the repository.
+
+- Create a new branch (git checkout -b feature/your-feature).
+
+- Commit your changes (git commit -m 'Add some feature').
+
+- Push to the branch (git push origin feature/your-feature).
+
+- Open a pull request.
+
+### License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+### Acknowledgments
+
+- Next.js for the powerful framework.
+
+- Neon DB for the PostgreSQL database.
+
+- Tailwind CSS for the utility-first CSS framework.
+
+- shadcn/ui for the UI components.
+
+### Contact
+- For any questions or feedback, feel free to reach out:
+
+- Email: saxenasaksham46@gmail.com
+
+- GitHub: Code12Git
+
+### Roadmap
+
+- Implement Candidate Flow.
+
+- Implement Company Flow.
+
+- Add authentication (optional).
+
+- Add pagination for job listings.
+
+- Enhance filtering and search functionality.
+
+Thank you for checking out the Mini Job Board! 🚀
