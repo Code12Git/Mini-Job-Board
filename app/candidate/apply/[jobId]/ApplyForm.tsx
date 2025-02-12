@@ -30,9 +30,8 @@ const ApplyForm = ({ jobId }: { jobId: string }) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    console.log("FormData:",formData)
-    try {
-      const response = await createApplication(formData);
+     try {
+      const response = await createApplication(formData, jobId);
       console.log("Application Data:", response);
       setTimeout(() => {
         setLoading(false);

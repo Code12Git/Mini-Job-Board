@@ -5,12 +5,12 @@ const api = createInstance('multipart/form-data');
 interface FormData {
     name: string;
     email: string;
-    resume: string; 
+    resumeLink: string; 
     coverLetter: string,
     jobId:string
 }
 
-export const createApplication = async (jobId:string,formData: FormData) => {
+export const createApplication = async (formData: FormData,jobId:string) => {
     try {
         const response = await api.post(`/applications/${jobId}`,formData);
         return response.data;

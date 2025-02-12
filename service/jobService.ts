@@ -21,7 +21,18 @@ export const getJobs = async () => {
     }
 }
 
-export const createJob = async (job: any) => {
+interface Job {
+    id: string;
+    title: string;
+    company: string;
+    category: string;
+    location: string;
+    salary: string;
+    type: string;
+    createdAt: string;
+}
+
+export const createJob = async (job: Job) => {
     try {
         const response = await api.post("/jobs", job);
         console.log("response", response);
@@ -43,7 +54,7 @@ export const deleteJob = async(jobId:string) => {
     }
 }
 
-export const updateJob = async(jobId: string, job) => {
+export const updateJob = async(jobId: string, job: Job) => {
     try{    
         const response = await api.put(`/jobs?id=${jobId}`,job);
         return response.data;

@@ -9,6 +9,17 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useEffect, useState } from "react";
+
+type JobData = {
+  id: string;
+  title: string;
+  company: string;
+  category: string;
+  location: string;
+  salary: string;
+  type: string;
+  createdAt: string;
+};
 import { getJobs } from "@/service/jobService";
 import JobModal from "@/components/JobModal/JobModal";
 import { Input } from "@/components/ui/input";
