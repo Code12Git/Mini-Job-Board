@@ -6,7 +6,16 @@ import { motion } from "framer-motion";
 import { MapPin, DollarSign, Clock } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-const JobCard = ({ job }: { job: any }) => {
+interface Job {
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  salary: string;
+  createdAt: string;
+}
+
+const JobCard = ({ job }: { job: Job }) => {
   const router = useRouter();
 
   const handleApplyNow = () => {

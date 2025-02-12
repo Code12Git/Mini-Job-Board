@@ -44,7 +44,7 @@ const JobModal = ({ jobId, fetchData }: { jobId: string; fetchData: () => void }
       const jobData = await getJobById(jobId);
       setJob(jobData);
       setEditedJob(jobData);
-    } catch (error) {
+    } catch {
       setError("Failed to fetch job details. Please try again.");
     } finally {
       setLoading(false);
@@ -56,7 +56,7 @@ const JobModal = ({ jobId, fetchData }: { jobId: string; fetchData: () => void }
       await deleteJob(jobId);
       fetchData();
       toast({ title: "Job Deleted Successfully!" });
-    } catch (error) {
+    } catch {
       toast({ title: "Failed to delete job", variant: "destructive" });
     }
   };
@@ -76,7 +76,7 @@ const JobModal = ({ jobId, fetchData }: { jobId: string; fetchData: () => void }
       setIsEditing(false);
       fetchData();
       toast({ title: "Job Updated Successfully!" });
-    } catch (error) {
+    } catch {
       toast({ title: "Failed to update job", variant: "destructive" });
     }
   };
@@ -102,7 +102,7 @@ const JobModal = ({ jobId, fetchData }: { jobId: string; fetchData: () => void }
                 {Object.keys(job).map((key) => (
                   <Input
                     key={key}
-                    value={(editedJob as any)[key] || ""}
+                    value={editedJob ? editedJob[key as keyof Job] : ""}
                     onChange={(e) => handleEditChange(key as keyof Job, e.target.value)}
                     placeholder={key}
                   />

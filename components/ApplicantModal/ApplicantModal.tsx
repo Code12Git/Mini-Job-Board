@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, {   useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -31,7 +31,7 @@ const ApplicantModal = ({
   isOpen: boolean;
   onClose: () => void;
 }) => {
-  const [applicant, setApplicant] = useState<Applicant | null>(null);
+  const [applicant, setApplicant] = useState<Applicant[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -41,7 +41,7 @@ const ApplicantModal = ({
     try {
       const data = await getApplicant(jobId);
       setApplicant(data.applications.applications);
-    } catch (error) {
+    } catch {
       setError("Failed to fetch job details. Please try again.");
     } finally {
       setLoading(false);
@@ -66,7 +66,7 @@ const ApplicantModal = ({
           <Skeleton className="h-4 w-full rounded-lg bg-gray-200" />
           <Skeleton className="h-4 w-full rounded-lg bg-gray-200" />
         </div>
-      ) : applicant ? (
+      ) : applicant.length > 0 ? (
         applicant.map((app) => (
           <div
             key={app.id}
@@ -106,6 +106,7 @@ const ApplicantModal = ({
         <p className="text-gray-700">No applicant details found.</p>
       )}
     </DialogContent>
+    {error}
   </Dialog>
   );
 };

@@ -4,8 +4,7 @@ const page = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-50 to-cyan-50">
-      {/* Navigation Bar */}
-      <nav className="bg-white shadow-lg">
+       <nav className="bg-white shadow-lg">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             <div className="text-2xl font-bold text-blue-700">

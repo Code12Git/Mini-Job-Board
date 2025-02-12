@@ -9,8 +9,7 @@ import { MapPin, DollarSign, Clock } from "lucide-react";
 import { getJobById } from "@/service/jobService";
 import { useRouter } from "next/navigation";
 
-// Define the Job type
-interface Job {
+ interface Job {
   id: string;
   title: string;
   company: string;

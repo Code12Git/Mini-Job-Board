@@ -122,7 +122,7 @@ const JobPostForm: React.FC = () => {
       setLoading(false);
       if (error instanceof Error) {
         if (error instanceof Error && (error as { response?: { data?: { error?: string } } }).response?.data?.error) {
-          setError((error as any).response.data.error);
+          setError((error as unknown as { response: { data: { error: string } } }).response.data.error);
         } else {
           setError("Failed to create job. Please try again.");
         }

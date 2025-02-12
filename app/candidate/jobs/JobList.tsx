@@ -5,8 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import JobCard from "./JobCard";
 import { getJobs } from "@/service/jobService";
 
-// Define the Job type
-interface Job {
+ interface Job {
   id: string;
   title: string;
   company: string;
@@ -33,7 +32,7 @@ const JobList = () => {
         console.error("Error fetching jobs:", error);
         setError("Failed to fetch jobs. Please try again later.");
       } finally {
-        setLoading(false); // Ensure loading is set to false after fetch
+        setLoading(false);  
       }
     };
 
