@@ -138,7 +138,7 @@ Prerequisites
 
 
   ```
-  git clone https://github.com/your-username/mini-job-board.git
+  git clone https://github.com/Code12Git/mini-job-board.git
   cd mini-job-board
   Install Dependencies:
   ```
@@ -228,9 +228,9 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ### Contact
 - For any questions or feedback, feel free to reach out:
 
-- Email: your-email@example.com
+- Email: saxenasaksham46@gmail.com
 
-- GitHub: your-username
+- GitHub: Code12Git
 
 ### Roadmap
 
