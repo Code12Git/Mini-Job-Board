@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request, { params }: { params: { jobId: string } }) {
   try {
     const { jobId } = params;
-    console.log(jobId)
     if (!jobId) {
       return NextResponse.json(
         { error: "jobId is required" },
@@ -38,10 +37,9 @@ export async function POST(req: Request, { params }: { params: { jobId: string }
 }
   
 
-export async function GET(req: Request, { params }: { params: { id: string }}) {
+export async function GET(req: Request, { params }: { params: { jobId: string }}) {
   try {
-    const { id: jobId } = params;
-
+    const { jobId } = await params;
 
     if (!jobId) {
       return NextResponse.json(
